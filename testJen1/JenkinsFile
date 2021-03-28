@@ -1,0 +1,23 @@
+pipeline {
+    agent {
+       
+    }
+    }
+    stages{
+        
+       stage('are we here?'){
+           echo "build job for testJen1!!!!"
+       }
+        }
+
+
+    }
+    post{
+        always {
+			cleanWs ()
+			}	
+       sucess {
+           //CAN MAKE NAME AND VALUE CHANGING ARGUMENTS DEPENDING ON WHICH ENVIRONMENT
+            build job: 'BCBDexther-rest-deploy', parameters: [string(name: 'GIT_BRANCH', value: 'master')]
+        }
+    }
